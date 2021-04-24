@@ -4,12 +4,12 @@
  * @author (your name)
  * @version (a version number or a date)
  */
-public class Snake
+public class PP_Snake
 {
     /**
      * Constructor for objects of class Snake
      */
-    public Snake() {
+    public PP_Snake() {
         // initialise instance variables        
     }
 
