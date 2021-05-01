@@ -1,7 +1,16 @@
 #BlueJ class context
 comment0.target=PP_Snake
-comment0.text=\n\ Write\ a\ description\ of\ class\ Snake\ here.\n\n\ @author\ (your\ name)\n\ @version\ (a\ version\ number\ or\ a\ date)\n
+comment0.text=\n\ Write\ a\ description\ of\ class\ Snake\ here.\n\n\ @author\ Prachi(23820430)\n\ @version\ (01/05/2021)\n
 comment1.params=
 comment1.target=PP_Snake()
 comment1.text=\n\ Constructor\ for\ objects\ of\ class\ Snake\n
-numComments=2
+comment2.params=
+comment2.target=void\ move()
+comment2.text=\n\ Method\ move\n\ controls\ the\ movement\ of\ snake\ (up,down,\ right,\ left)\n\ \ \ \ \n
+comment3.params=
+comment3.target=void\ CheckPrey()
+comment3.text=\n\ Method\ CheckPrey\n\ snake\ finds\ prey\ to\ eat\ it\n\ \ \ \ \n
+comment4.params=
+comment4.target=void\ checkCollision()
+comment4.text=\n\ Method\ checkCollision\n\ it\ checks\ if\ the\ snakes\ collides\ with\ the\ wall\ or\ itself\n\ \n
+numComments=5

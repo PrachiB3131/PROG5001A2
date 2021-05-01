@@ -1,10 +1,10 @@
 /**
  * Write a description of class Snake here.
  *
- * @author (your name)
- * @version (a version number or a date)
+ * @author Prachi(23820430)
+ * @version (01/05/2021)
  */
-public class PP_Snake
+abstract class PP_Snake
 {
     /**
      * Constructor for objects of class Snake
@@ -12,5 +12,34 @@ public class PP_Snake
     public PP_Snake() {
         // initialise instance variables        
     }
+
+    /**
+     * Method move
+     * controls the movement of snake (up,down, right, left)
+     *    
+     */
+    public abstract void move();
+    {
+        // put your code here
+    }
+    /**
+     * Method CheckPrey
+     * snake finds prey to eat it
+     *    
+     */
+    private void CheckPrey()
+    {
+        // put your code here
+    }
+    /**
+     * Method checkCollision
+     * it checks if the snakes collides with the wall or itself
+     * 
+     */
+    private void checkCollision()
+    {
+        // put your code here
+    }
+
 
 }
