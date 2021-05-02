@@ -16,7 +16,7 @@ abstract class PP_Snake
     /**
      * Method move
      * controls the movement of snake (up,down, right, left)
-     *    
+     * user controls this movement by pressing keyboard keys
      */
     public abstract void move();
     {
@@ -25,18 +25,18 @@ abstract class PP_Snake
     /**
      * Method CheckPrey
      * snake finds prey to eat it
-     *    
+     * it checks  x and y coordinates of the apple till they matches the
+     * x and y coordinates of the snake head
      */
-    private void CheckPrey()
+    public void CheckPrey()
     {
         // put your code here
     }
     /**
      * Method checkCollision
-     * it checks if the snakes collides with the wall or itself
-     * 
+     * it checks if the snake collides with the wall or itself 
      */
-    private void checkCollision()
+    public void checkCollision()
     {
         // put your code here
     }

@@ -6,5 +6,5 @@ comment1.target=PP_Prey()
 comment1.text=\n\ Constructor\ for\ objects\ of\ class\ Prey\n
 comment2.params=
 comment2.target=void\ locatePrey()
-comment2.text=\n\ Method\ locatePrey\nThis\ method\ is\ used\ to\ set\ the\ random\ position\ of\ the\ prey\n\ \n
+comment2.text=\n\ Method\ locatePrey\nThis\ method\ is\ used\ to\ set\ the\ random\ position\ of\ the\ prey\n\ when\ the\ x\ and\ y\ coordinates\ of\ snek\ head\ and\ prey\ matches\ in\ method\ \n\ checkPrey\n
 numComments=3
