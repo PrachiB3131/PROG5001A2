@@ -1,10 +1,9 @@
 #BlueJ class context
 comment0.target=PP_Prey
-comment0.text=\n\ Class\ Prey\ represents\ any\ prey\ object.\n\n\ @Prachi(23820430)\ \n\ @(02/05/2021)\n
-comment1.params=
-comment1.target=PP_Prey()
-comment1.text=\n\ Constructor\ for\ objects\ of\ class\ Prey\n
-comment2.params=
-comment2.target=void\ locatePrey()
-comment2.text=\n\ Method\ locatePrey\nThis\ method\ is\ used\ to\ set\ the\ random\ position\ of\ the\ prey\n\ when\ the\ x\ and\ y\ coordinates\ of\ snek\ head\ and\ prey\ matches\ in\ method\ \n\ checkPrey\n
-numComments=3
+comment1.params=image_path\ width\ height
+comment1.target=PP_Prey(java.lang.String,\ int,\ int)
+comment2.params=g
+comment2.target=void\ paintComponent(java.awt.Graphics)
+comment3.params=args
+comment3.target=void\ main(java.lang.String[])
+numComments=4
