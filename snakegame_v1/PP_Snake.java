@@ -12,47 +12,49 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
+
 public class PP_Snake extends JPanel {
     Image head;
     Image body;
+    
     public PP_Snake() {
         head= new ImageIcon("Images/Head.png").getImage();
         body= new ImageIcon("Images/Body.png").getImage();
-        Dimension dimension = new Dimension(50,50);
+        Dimension dimension = new Dimension(90,90);
         setPreferredSize(dimension);
+        
+        
     }
 
     public void paintComponent(Graphics g) {
-        g.drawImage(head, 20, 20, null);
+        g.drawImage(head, 90, 90, null);
         repaint();
 
-        int x_axis = 100;
-        int y_axis = 150;
 
-        for(int i=0; i<3; i++)
+        for(int i=1; i<=2; i++)
         {
-            g.drawImage(body, 100+(i*250), 100, null);
-            //repaint();
+            g.drawImage(body, 100+(i*35), 196, null);
+            repaint();
             //y_axis = y_axis + 30;
         }
 
-        for(int j=0; j<4; j++)
+        for(int j=1; j<=3; j++)
         { 
-            g.drawImage(body,900,100+(j*250), null);
-            //repaint();
+            g.drawImage(body,95,105+(j*30), null);
+            repaint();
             //x_axis = x_axis + 30;
         }
         repaint();
-        g.drawImage(body, 100, 100, null);
+        g.drawImage(body, 170, 167, null);
     }
 
     public static void main(String args[]) {
-        JFrame frame = new JFrame("Image Snake");
+        JFrame frame = new JFrame("Image Demo");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         PP_Snake panel = new PP_Snake();
 
         frame.add(panel);
-        frame.setSize(300, 200);
+        frame.setSize(900, 500);
         frame.setVisible(true);
     }
-}  
+}
