@@ -2,9 +2,6 @@ import java.awt.GridBagLayout;
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
 import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.SwingUtilities;
@@ -14,19 +11,23 @@ import java.util.Scanner;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.lang.String;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
 
 /**
  * This program demonstrates how to use JFrame and LayoutManager.
- * @author Vinh Bui
+ * @author Prachi
  */
 
 public class PP_LoginForm extends JFrame implements ActionListener {
-    private JLabel labelUsername;
-    private JLabel labelPassword;   
-    private JTextField textUsername;
     private JPasswordField fieldPassword;
     private JButton buttonLogin;
     private PP_PlayerList playerList;
+    private JLabel labelUsername;
+    private JLabel labelPassword;   
+    private JTextField textUsername;
+
     public PP_LoginForm() {
         super("Login Form");
         labelUsername = new JLabel("Enter username: ");
@@ -84,6 +85,7 @@ public class PP_LoginForm extends JFrame implements ActionListener {
         }
     }
 
+
     public void actionPerformed(ActionEvent e) {
         String username = textUsername.getText();
         String password = fieldPassword.getText();
@@ -91,14 +93,22 @@ public class PP_LoginForm extends JFrame implements ActionListener {
             JOptionPane.showMessageDialog(this, username + ": login successfully");
             // Create object for the class to run it
 
-            PP_SnakeGame game = new PP_SnakeGame("snake");
-            game.setVisible(true);
+            JFrame PLAYGAME = new JFrame();
+            PLAYGAME.add(new PP_GameBoard());
+            PLAYGAME.setResizable(false);
+            PLAYGAME.pack();
+            PLAYGAME.setLocationRelativeTo(null);
+            PLAYGAME.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+            PLAYGAME.setTitle("Snake");
+            PLAYGAME.setVisible(true);
+
 
         } else {
             JOptionPane.showMessageDialog(this, "wrong username or password");
         }
 
     }
+
 
     private void readPlayerFromFile(String fileName) throws FileNotFoundException{
         File file = new File(fileName);
