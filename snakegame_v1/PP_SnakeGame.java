@@ -4,20 +4,17 @@
  * @Prachi(23820430) 
  * @(02/05/2021)
  */
+//https://www.w3schools.com/java/java_interface.asp
+//https://www.w3schools.com/java/java_inheritance.asp
 import java.awt.Color;
-import java.awt.EventQueue;
 import javax.swing.JPanel;
-import javax.swing.LayoutStyle;
 import javax.swing.border.LineBorder;
 import java.awt.Insets;
-import javax.swing.GroupLayout;
 import javax.swing.ImageIcon;
-import java.awt.event.*;
-import javax.swing.JOptionPane;
-import java.awt.Graphics;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
-import java.awt.Image;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -26,27 +23,32 @@ import java.awt.Dimension;
 public class PP_SnakeGame extends JFrame implements ActionListener {
     private JLabel GameOver;
     private JButton ClickToPlay;
-    private JLabel TopPlayersScore;   
+    private JLabel TopPlayersScore;
+    private JLabel NewTopPlayersScore;  
     private JLabel CurrentPlayerScore;
     private JButton Quit;
-    private Graphics g;
     private JLabel MySnakeGame; 
-    private Image Snake;
     private JLabel SnakeLabel;
     private JLabel Name;
 
     public PP_SnakeGame(String SnakeGame) {  
         super(SnakeGame);
-
+        boolean flag = false;
         GameOver = new JLabel("GAME OVER");
         ClickToPlay = new JButton("CLICK TO PLAY");   
-        TopPlayersScore = new JLabel("TOP PLAYER'S SCORE");  
+        TopPlayersScore = new JLabel("TOP PLAYER'S SCORE:"+PP_LoginForm.topScore);  
         SnakeLabel = new JLabel();
         Quit = new JButton("QUIT");
         Quit.setBackground(Color.BLUE);
         MySnakeGame= new JLabel("MY SNAKE GAME ©");
-        CurrentPlayerScore = new JLabel("CURRENT PLAYER SCORE"); 
+        CurrentPlayerScore = new JLabel("CURRENT PLAYER SCORE:"+(PP_GameBoard.snakebody-4)); 
         Name = new JLabel("PROG5001:2021 PRACHI");
+
+        if(PP_LoginForm.topScore < (PP_GameBoard.snakebody-4)){
+            flag = true;
+            NewTopPlayersScore = new JLabel("NEW TOP PLAYER'S SCORE:: "+(PP_GameBoard.snakebody-4));  
+            PP_LoginForm.writeTopScore((PP_GameBoard.snakebody-4)+"");
+        }
 
         //NORTH COMPONENTS
         JPanel NPanel = new JPanel(new GridBagLayout());
@@ -86,10 +88,19 @@ public class PP_SnakeGame extends JFrame implements ActionListener {
         constraints.insets = new Insets(10, 10, 10, 10);
 
         //TOP PLAYER'S SCORE LABEL
-        constraints.gridx = 0;
-        constraints.gridy = 0;     
-        EPanel.add(TopPlayersScore, constraints);
-        TopPlayersScore.setBorder(new LineBorder(Color.blue,1));
+        if(!flag){
+            constraints.gridx = 0;
+            constraints.gridy = 0;     
+            EPanel.add(TopPlayersScore, constraints);
+            TopPlayersScore.setBorder(new LineBorder(Color.blue,1));
+        }
+
+        if(flag){
+            constraints.gridx = 0;
+            constraints.gridy = 0;   
+            EPanel.add(NewTopPlayersScore, constraints);
+            NewTopPlayersScore.setBorder(new LineBorder(Color.blue,1));
+        }
 
         //CURRENT PLAYER SCORE LABEL
         constraints.gridx = 0;  
@@ -112,6 +123,7 @@ public class PP_SnakeGame extends JFrame implements ActionListener {
         //QUIT BUTTON
         constraints.gridx = 0;  
         constraints.gridy = 4;
+        Quit.addActionListener(this);
         EPanel.add(Quit, constraints);
 
         //Adding all the components to the panel
@@ -119,10 +131,12 @@ public class PP_SnakeGame extends JFrame implements ActionListener {
         add(WPanel);
         add(EPanel);
 
+        //Setting the size and visibility of the JFrame
         setPreferredSize(new Dimension(1500, 1500));
-        setLocationRelativeTo(null);
         setVisible(true);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         pack();
+        setLocationRelativeTo(null);
 
     }
 
@@ -131,10 +145,19 @@ public class PP_SnakeGame extends JFrame implements ActionListener {
         newgame.add(new PP_GameBoard());
         newgame.setResizable(false);
         newgame.pack();
-        newgame.setLocationRelativeTo(null);
         newgame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         newgame.setTitle("Snake");
         newgame.setVisible(true);
+        newgame.setLocationRelativeTo(null);
+        try
+        {
+            PP_LoginForm.readTopScoreFromFile("TopPlayerScore.txt");
+        }
+        catch (java.io.FileNotFoundException fnfe)
+        {
+            fnfe.printStackTrace();
+        }
 
     }
+
 }

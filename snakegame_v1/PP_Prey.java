@@ -4,37 +4,30 @@
  * @Prachi(23820430) 
  * @(02/05/2021)
  */
-import java.awt.Graphics;
-import java.awt.Color;
-import java.awt.Dimension;
+//https://stackoverflow.com/questions/57777780/how-to-get-math-random-with-a-unit-step
 import java.awt.Image;
-import javax.swing.JFrame;
-import javax.swing.JPanel;
 import javax.swing.ImageIcon;
-import javax.swing.JLabel;
-import java.awt.EventQueue;
+import java.lang.Math;
 
-public class PP_Prey extends JFrame {
+public class PP_Prey  {
     public Image img;
-    public int preyx;
-    public int preyy;
+    public int prey_on_xaxis;
+    public int prey_on_yaxis;
     public PP_Prey() {
         img = new ImageIcon("Images/Prey.png").getImage();
-        //img = img.getScaledInstance(width, height, Image.SCALE_DEFAULT);
-        Dimension size = new Dimension(9, 9);
-        setPreferredSize(size);
     }
 
     /**
      * Method checkPrey
+     * It checks the collision of the head of the snake with prey
      * 
      */
-    public void checkPrey(int x, int y , int RAND_POSITION, int PREY_SIZE)
+    public void checkPreyCollision(int x, int y , int RANDOM_POSITION, int PREY_SIZE)
     {
-        if ((x == preyx) && (y == preyy)) {
+        if ((x == prey_on_xaxis) && (y == prey_on_yaxis)) {
 
             PP_GameBoard.snakebody++;
-            randomposition(RAND_POSITION,PREY_SIZE);
+            randomposition(RANDOM_POSITION,PREY_SIZE);
         } 
     }
 
@@ -43,14 +36,14 @@ public class PP_Prey extends JFrame {
      *
      * It allocates the random position to prey
      */
-    public void randomposition(int RAND_POSITION, int PREY_SIZE)
+    public void randomposition(int RANDOM_POSITION, int PREY_SIZE)
     {
-        int r = (int) (Math.random() * RAND_POSITION);
-        preyx= ((r * PREY_SIZE));
+        int r = (int) (Math.random() * RANDOM_POSITION);
+        prey_on_xaxis= ((r * PREY_SIZE));
 
-        r = (int) (Math.random() * RAND_POSITION);
-        preyy = ((r * PREY_SIZE));    
+        r = (int) (Math.random() * RANDOM_POSITION);
+        prey_on_yaxis = ((r * PREY_SIZE));    
 
     }
-
 }
+

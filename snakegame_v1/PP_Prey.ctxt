@@ -2,10 +2,10 @@
 comment0.target=PP_Prey
 comment1.params=
 comment1.target=PP_Prey()
-comment2.params=x\ y\ RAND_POSITION\ PREY_SIZE
-comment2.target=void\ checkPrey(int,\ int,\ int,\ int)
-comment2.text=\n\ Method\ checkPrey\n\ \n
-comment3.params=RAND_POSITION\ PREY_SIZE
+comment2.params=x\ y\ RANDOM_POSITION\ PREY_SIZE
+comment2.target=void\ checkPreyCollision(int,\ int,\ int,\ int)
+comment2.text=\n\ Method\ checkPrey\n\ It\ checks\ the\ collision\ of\ the\ head\ of\ the\ snake\ with\ prey\n\ \n
+comment3.params=RANDOM_POSITION\ PREY_SIZE
 comment3.target=void\ randomposition(int,\ int)
 comment3.text=\n\ Method\ randomposition\n\n\ It\ allocates\ the\ random\ position\ to\ prey\n
 numComments=4

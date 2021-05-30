@@ -6,7 +6,8 @@ import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.SwingUtilities;
 import javax.swing.JOptionPane;
-import java.awt.event.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.Scanner;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -14,9 +15,11 @@ import java.lang.String;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import java.io.FileWriter;
+import java.io.IOException;
 
 /**
- * This program demonstrates how to use JFrame and LayoutManager.
+ * This program demonstrates how to use JFrame and LayoutManager. Implementing a Login form for the game.
  * @author Prachi
  */
 
@@ -27,9 +30,9 @@ public class PP_LoginForm extends JFrame implements ActionListener {
     private JLabel labelUsername;
     private JLabel labelPassword;   
     private JTextField textUsername;
-
+    public static int topScore;
     public PP_LoginForm() {
-        super("Login Form");
+        super("Login Form for Snake Game");
         labelUsername = new JLabel("Enter username: ");
         labelPassword = new JLabel("Enter password: ");   
         textUsername = new JTextField(20);
@@ -39,9 +42,9 @@ public class PP_LoginForm extends JFrame implements ActionListener {
         // create a new panel with GridBagLayout manager
         JPanel panelLogin = new JPanel(new GridBagLayout());
 
-        //use contrains to control the gridbaglayout
+        //use contraints to control the gridbaglayout
         GridBagConstraints constraints = new GridBagConstraints();
-        constraints.anchor = GridBagConstraints.WEST;
+        constraints.anchor = GridBagConstraints.EAST;
         constraints.insets = new Insets(10, 10, 10, 10);
 
         // add components to the panel
@@ -80,18 +83,51 @@ public class PP_LoginForm extends JFrame implements ActionListener {
         playerList = new PP_PlayerList();
         try {
             readPlayerFromFile("players.txt");
+            readTopScoreFromFile("TopPlayerScore.txt");
         } catch (FileNotFoundException e) {
             JOptionPane.showMessageDialog(this, "File Not Found");
         }
     }
 
+    public static void readTopScoreFromFile(String fileName) throws FileNotFoundException{
+        File file = new File(fileName);
 
+        //Creating Scanner instnace to read File in Java
+        Scanner scnr = new Scanner(file);
+
+        //Reading each line of file using Scanner class
+        while(scnr.hasNextLine()){
+            String line = scnr.nextLine();
+            Scanner uscanner = new Scanner(line);
+            topScore = Integer.parseInt(uscanner.next());
+        }      
+    }
+    
+    public static void writeTopScore(String value){
+        File file = new File("TopPlayerScore.txt");
+        FileWriter fw = null;
+        try {
+            fw = new FileWriter(file);
+            fw.write(value);
+        } catch (IOException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }finally {
+            try {
+                fw.close();
+            } catch (IOException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            }
+        }
+        
+    }
     public void actionPerformed(ActionEvent e) {
         String username = textUsername.getText();
         String password = fieldPassword.getText();
         if (playerList.matchPlayer(username, password)) {
             JOptionPane.showMessageDialog(this, username + ": login successfully");
-            // Create object for the class to run it
+            // Creating an object for the class to run it
 
             JFrame PLAYGAME = new JFrame();
             PLAYGAME.add(new PP_GameBoard());
@@ -113,7 +149,7 @@ public class PP_LoginForm extends JFrame implements ActionListener {
     private void readPlayerFromFile(String fileName) throws FileNotFoundException{
         File file = new File(fileName);
 
-        //Creating Scanner instnace to read File in Java
+        //Creating Scanner instance to read File in Java
         Scanner scnr = new Scanner(file);
 
         //Reading each line of file using Scanner class
