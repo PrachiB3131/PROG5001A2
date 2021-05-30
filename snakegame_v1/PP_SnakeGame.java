@@ -6,6 +6,7 @@
  */
 //https://www.w3schools.com/java/java_interface.asp
 //https://www.w3schools.com/java/java_inheritance.asp
+//https://www.daniweb.com/programming/software-development/threads/447323/what-does-e-getsource-actually-return
 import java.awt.Color;
 import javax.swing.JPanel;
 import javax.swing.border.LineBorder;
@@ -141,14 +142,20 @@ public class PP_SnakeGame extends JFrame implements ActionListener {
     }
 
     public void actionPerformed(ActionEvent e){
-        JFrame newgame = new JFrame();
-        newgame.add(new PP_GameBoard());
-        newgame.setResizable(false);
-        newgame.pack();
-        newgame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        newgame.setTitle("Snake");
-        newgame.setVisible(true);
-        newgame.setLocationRelativeTo(null);
+        if(e.getSource()==ClickToPlay)
+        {
+            JFrame newgame = new JFrame();
+            newgame.add(new PP_GameBoard());
+            newgame.setResizable(false);
+            newgame.pack();
+            newgame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+            newgame.setTitle("Snake");
+            newgame.setVisible(true);
+            newgame.setLocationRelativeTo(null);
+        }
+        else if(e.getSource()==Quit)
+            System.exit(0);
+            
         try
         {
             PP_LoginForm.readTopScoreFromFile("TopPlayerScore.txt");

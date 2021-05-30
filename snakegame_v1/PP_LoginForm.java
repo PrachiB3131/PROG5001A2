@@ -1,3 +1,10 @@
+/**
+ * This program demonstrates how to use JFrame and LayoutManager. Implementing a Login form for the game.
+ * @author Prachi
+ */
+//https://www.geeksforgeeks.org/throwable-printstacktrace-method-in-java-with-examples/
+//https://www.geeksforgeeks.org/flow-control-in-try-catch-finally-in-java/
+//https://stackabuse.com/reading-and-writing-files-in-java/
 import java.awt.GridBagLayout;
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
@@ -17,11 +24,6 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import java.io.FileWriter;
 import java.io.IOException;
-
-/**
- * This program demonstrates how to use JFrame and LayoutManager. Implementing a Login form for the game.
- * @author Prachi
- */
 
 public class PP_LoginForm extends JFrame implements ActionListener {
     private JPasswordField fieldPassword;
@@ -102,7 +104,7 @@ public class PP_LoginForm extends JFrame implements ActionListener {
             topScore = Integer.parseInt(uscanner.next());
         }      
     }
-    
+
     public static void writeTopScore(String value){
         File file = new File("TopPlayerScore.txt");
         FileWriter fw = null;
@@ -120,8 +122,9 @@ public class PP_LoginForm extends JFrame implements ActionListener {
                 e.printStackTrace();
             }
         }
-        
+
     }
+
     public void actionPerformed(ActionEvent e) {
         String username = textUsername.getText();
         String password = fieldPassword.getText();
@@ -138,13 +141,11 @@ public class PP_LoginForm extends JFrame implements ActionListener {
             PLAYGAME.setTitle("Snake");
             PLAYGAME.setVisible(true);
 
-
         } else {
             JOptionPane.showMessageDialog(this, "wrong username or password");
         }
 
     }
-
 
     private void readPlayerFromFile(String fileName) throws FileNotFoundException{
         File file = new File(fileName);
