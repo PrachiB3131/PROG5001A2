@@ -100,8 +100,7 @@ public class PP_LoginForm extends JFrame implements ActionListener {
         //Reading each line of file using Scanner class
         while(scnr.hasNextLine()){
             String line = scnr.nextLine();
-            Scanner uscanner = new Scanner(line);
-            topScore = Integer.parseInt(uscanner.next());
+            topScore = Integer.parseInt(line);
         }      
     }
 
